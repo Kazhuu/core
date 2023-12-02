@@ -90,7 +90,7 @@ async def async_setup_entry(
 
 
 class FlexitSensorEntity(CoordinatorEntity, SensorEntity):
-    """Flexit ventilation machine sensor entity."""
+    """Flexit Nordic ventilation machine sensor entity."""
 
     def __init__(
         self,

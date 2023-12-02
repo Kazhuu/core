@@ -4,6 +4,7 @@ import asyncio
 import asyncio.exceptions
 from dataclasses import dataclass
 from enum import StrEnum
+from typing import Any
 
 from flexit_bacnet.bacnet import DecodingError
 
@@ -145,6 +146,7 @@ class FlexitFanEntity(CoordinatorEntity, FanEntity):
 
     entity_description: FlexitFanEntityDescription
     _attr_has_entity_name = True
+    _attr_is_on = True
     _attr_supported_features = FanEntityFeature.SET_SPEED
 
     def __init__(
@@ -168,6 +170,17 @@ class FlexitFanEntity(CoordinatorEntity, FanEntity):
             manufacturer=MANUFACTURER,
             model=MODEL,
         )
+
+    def turn_on(
+        self,
+        percentage: int | None = None,
+        preset_mode: str | None = None,
+        **kwargs: Any,
+    ) -> None:
+        """Turn on the fan."""
+
+    def turn_off(self, **kwargs: Any) -> None:
+        """Turn the entity off."""
 
     @property
     def percentage(self) -> int | None:

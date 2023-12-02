@@ -27,6 +27,9 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import FlexitDataUpdateCoordinator
 from .const import (
+    CLIMATE_MAX_TEMP,
+    CLIMATE_MIN_TEMP,
+    CLIMATE_TEMP_STEP,
     DOMAIN,
     MANUFACTURER,
     MODEL,
@@ -68,7 +71,9 @@ class FlexitClimateEntity(CoordinatorEntity, ClimateEntity):
         | ClimateEntityFeature.AUX_HEAT
     )
 
-    _attr_target_temperature_step = 1.0
+    _attr_target_temperature_step = CLIMATE_TEMP_STEP
+    _attr_max_temp = CLIMATE_MAX_TEMP
+    _attr_min_temp = CLIMATE_MIN_TEMP
     _attr_temperature_unit = UnitOfTemperature.CELSIUS
 
     def __init__(
